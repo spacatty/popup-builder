@@ -1,0 +1,53 @@
+let {{uniqueId}}Popup;
+let {{uniqueId}}PIsLoaded = false;
+
+function {{uniqueId}}ShowIframe() {
+    setTimeout((() => {
+        {{uniqueId}}Popup.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }), 400);
+}
+
+function {{uniqueId}}ConfirmIframe() {
+    alert("Confirmed")
+}
+
+function {{uniqueId}}HideIframe() {
+    setTimeout((() => {
+        {{uniqueId}}Popup.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }), 100);
+}
+
+function {{uniqueId}}SetEventListeners() {
+    window.addEventListener('message', (event) => {
+        switch (event.data) {
+            case "{{uniqueId}}-loaded": {
+                {{uniqueId}}PIsLoaded = true;
+                {{uniqueId}}ShowIframe();
+                break;
+            }
+            case "{{uniqueId}}-confirm": {
+                {{uniqueId}}ConfirmIframe();
+                break;
+            }
+            case "{{uniqueId}}-close": {
+                {{uniqueId}}HideIframe();
+                break;
+            }
+        }
+    });
+}
+
+{{uniqueId}}SetEventListeners();
+
+window.addEventListener("load", () => {
+    const iframeStyle = document.createElement("style");
+    iframeStyle.textContent = `{{iframeStyles}}`;
+    document.head.appendChild(iframeStyle);
+
+    {{uniqueId}}Popup = document.createElement("iframe");
+    {{uniqueId}}Popup.src = "data:text/html;base64,{{base64Html}}";
+    {{uniqueId}}Popup.className = "{{uniqueId}}-popup-iframe";
+    document.body.appendChild({{uniqueId}}Popup);
+});

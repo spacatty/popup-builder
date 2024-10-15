@@ -1,0 +1,14 @@
+.{{uniqueId}}-popup-iframe {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    min-height: 100vh !important;
+    width: 100vw !important;
+    opacity: 0 !important;
+    transition: .2s ease-in-out !important;
+    z-index: 9999 !important;
+}
+
+.{{uniqueId}}-popup-iframe.show {
+    opacity: 1 !important;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Example</title>
+    <style>
+        /* Basic styling for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        section {
+            padding: 2em;
+            border-bottom: 1px solid #ddd;
+            height: 100vh;
+        }
+
+        .section-1 {
+            background-color: #f4f4f4;
+        }
+
+        .section-2 {
+            background-color: #e2e2e2;
+        }
+
+        .section-3 {
+            background-color: #cfcfcf;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Landing Page Example</h1>
+        <p>Your popup will be served as <code>popup.js</code>.</p>
+    </header>
+
+    <section class="section-1">
+        <h2>Welcome Section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+    </section>
+
+    <section class="section-2">
+        <h2>About Us Section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+    </section>at
+
+    <section class="section-3">
+        <h2>Our Services Section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Landing Page Example</p>
+    </footer>
+
+    <!-- Include popup.js -->
+    <script src="popup.js"></script>
+
+    <!--
+        WebSocket Script for Dev Mode
+        Remove this script in production
+    -->
+    <script>
+        // Connect to WebSocket server on page load
+        const socket = new WebSocket(`ws://${location.hostname}:${location.port}`);
+
+        // Listen for messages
+        socket.addEventListener('message', (event) => {
+            if (event.data === 'reload') {
+                console.log('Reload message received. Reloading page...');
+                location.reload();
+            }
+        });
+
+        // Log connection status
+        socket.addEventListener('open', () => console.log('Connected to WebSocket server.'));
+        socket.addEventListener('close', () => console.log('Disconnected from WebSocket server.'));
+    </script>
+</body>
+
+</html>

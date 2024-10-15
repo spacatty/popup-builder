@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Content</title>
+    <!-- Tailwind Styles -->
+</head>
+
+<body class="min-h-screen min-w-screen h-full w-full overflow-auto relative text-white">
+    <div
+        class="overlay fixed top-0 left-0 h-full w-full overflow-y-auto z-[990] bg-gray-900/70 backdrop-blur-sm items-start p-4 md:p-0 md:items-center flex justify-center">
+        <div
+            class="popup-container relative bg-black h-fit w-[666px] pb-4 overflow-hidden flex flex-col items-center justify-center">
+            <section class="header w-full h-16 shrink-0 bg-[#1D1F21] flex items-center justify-center relative">
+                <p class="text-center md:text-xl">Popup Title</p>
+                <div onclick="closePopup()"
+                    class="popup-close absolute -translate-y-1/2 top-1/2 right-4 hover:bg-gray-700 p-2 rounded-full cursor-pointer">
+                    <svg class="fill-current h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M19.207 6.207a1 1 0 0 0-1.414-1.414L12 10.586 6.207 4.793a1 1 0 0 0-1.414 1.414L10.586 12l-5.793 5.793a1 1 0 1 0 1.414 1.414L12 13.414l5.793 5.793a1 1 0 0 0 1.414-1.414L13.414 12l5.793-5.793z"
+                            fill="current" />
+                    </svg>
+                </div>
+            </section>
+            <section class="popup-hero flex-1 relative h-full w-full">
+                <div
+                    class="popup-hero-content h-full w-full relative z-[992] flex flex-col items-center justify-around">
+                    <div onclick="confirmPopup()"
+                        class="text-center z-[993] hover:w-2/3 hover:bg-[#CA4222] glow-circle cursor-pointer shadow-2xl shadow-[#989818] mt-4 p-6 rounded-full w-3/4 mx-auto bg-[#379CEF] group transition-all">
+                        <p class="font-bold uppercase tracking-[.12em] group-hover:tracking-[.3em] transition-all">
+                            Accept offer</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script>
+    function closePopup() {
+        window.parent.postMessage('someId-close', '*');
+    }
+
+    function confirmPopup() {
+        window.parent.postMessage('someId-confirm', '*');
+    }
+
+    window.onload = function () {
+        window.parent.postMessage('someId-loaded', '*');
+    };
+</script>
+
+</html>

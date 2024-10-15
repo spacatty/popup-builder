@@ -1,0 +1,24 @@
+{
+  "name": "create-popup",
+  "version": "1.0.0",
+  "description": "A CLI tool to create popup projects",
+  "main": "index.js",
+  "bin": {
+    "create-popup": "index.js"
+  },
+  "scripts": {
+    "dev": "node app dev",
+    "build": "node app build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "chokidar": "^4.0.1",
+    "postcss": "^8.4.47",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^3.4.14",
+    "ws": "^8.18.0"
+  }
+}
